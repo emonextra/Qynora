@@ -1,4 +1,91 @@
-<!doctype html><html lang="bn"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#09090b"><title>Qynora Marketplace</title><style>
-*{box-sizing:border-box}body{margin:0;background:#f7f7f9;color:#15151a;font-family:Arial,sans-serif;padding-bottom:65px}.top{background:#09090b;color:#ddd;padding:9px 16px;font-size:12px;display:flex;justify-content:space-between}header{background:white;position:sticky;top:0;border-bottom:1px solid #eee;z-index:3}.head{max-width:1100px;margin:auto;padding:14px 16px;display:flex;gap:14px;align-items:center}.logo{font-size:25px;font-weight:900;background:linear-gradient(90deg,#e52b65,#6937c8);color:transparent;background-clip:text}.search{display:flex;flex:1;border:1px solid #ddd;border-radius:9px;overflow:hidden}.search input{border:0;padding:12px;width:100%;outline:0}.search button{border:0;background:linear-gradient(90deg,#e52b65,#6937c8);color:white;padding:0 15px}.links{font-size:13px;white-space:nowrap}.nav{max-width:1100px;margin:auto;padding:0 16px 12px;display:flex;gap:20px;font-size:13px;overflow:auto;white-space:nowrap}.wrap{max-width:1100px;margin:17px auto;padding:0 16px}.hero{border-radius:16px;padding:30px;color:white;background:linear-gradient(115deg,#101014,#4b205f 60%,#e52b65);display:flex;justify-content:space-between;align-items:center}.hero h1{font-size:clamp(24px,4vw,39px);margin:0 0 10px}.hero p{font-size:14px;line-height:1.5;color:#f4eaf4}.cta{display:inline-block;background:white;color:#17131d;padding:11px 15px;border-radius:8px;font-weight:bold;font-size:13px}.art{font-size:75px;padding:15px}.heading{display:flex;justify-content:space-between;align-items:center;margin:25px 0 12px}.heading h2{font-size:20px;margin:0}.muted{font-size:12px;color:#777}.cats{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.cat{background:white;border:1px solid #eee;border-radius:12px;padding:15px 5px;text-align:center;font-size:13px;font-weight:bold}.cat b{display:block;font-size:27px;margin-bottom:7px}.products{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.card{background:white;border:1px solid #eee;border-radius:13px;overflow:hidden}.photo{height:130px;background:linear-gradient(135deg,#eee,#e4e1eb);display:grid;place-items:center;font-size:52px}.details{padding:11px}.name{font-size:13px;min-height:32px}.price{font-weight:bold;color:#bd2054;margin:8px 0}.add{width:100%;border:0;border-radius:7px;background:#111;color:white;padding:9px;font-weight:bold}.notice{display:none;position:fixed;bottom:75px;left:10%;right:10%;background:#111;color:white;text-align:center;padding:12px;border-radius:9px}footer{text-align:center;background:#101014;color:#ddd;padding:25px;font-size:12px;line-height:1.8}.bottom{display:none}
-@media(max-width:700px){.head{flex-wrap:wrap}.search{order:3;flex-basis:100%}.links{margin-left:auto}.hero{padding:22px 18px}.art{font-size:52px;padding:4px}.cats{grid-template-columns:repeat(3,1fr)}.products{grid-template-columns:repeat(2,1fr)}.bottom{display:flex;position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid #ddd;justify-content:space-around;padding:9px;z-index:4}.bottom button{border:0;background:none;font-size:11px}.bottom b{display:block;font-size:18px}}
-</style></head><body><div class="top"><span>Qynora-তে স্বাগতম</span><span>বাংলা | English</span></div><header><div class="head"><div class="logo">QYNORA</div><div class="search"><input id="q" placeholder="আপনার পছন্দের পণ্য খুঁজুন..." oninput="searchP()"><button onclick="searchP()">খুঁজুন</button></div><div class="links">👤 Account　 🛒 Cart (<span id="count">0</span>)</div></div><nav class="nav"><a href="#">হোম</a><a href="#cats">ক্যাটাগরি</a><a href="#products">জনপ্রিয় পণ্য</a><a href="#seller">বিক্রেতা হোন</a><a href="#help">সাহায্য</a></nav></header><main class="wrap"><section class="hero"><div><h1>এক জায়গায় আপনার পছন্দের সবকিছু</h1><p>Qynora-তে আবিষ্কার করুন নতুন পণ্য, দারুণ সব কালেকশন এবং সহজ কেনাকাটার অভিজ্ঞতা।</p><a class="cta" href="#products">কেনাকাটা শুরু করুন →</a></div><div class="art">🛍️</div></section><div class="heading" id="cats"><h2>ক্যাটাগরি অনুসন্ধান</h2><span class="muted">আপনার পছন্দ বেছে নিন</span></div><section class="cats"><div class="cat"><b>📱</b>ইলেকট্রনিক্স</div><div class="cat"><b>👕</b>ফ্যাশন</div><div class="cat"><b>🏠</b>হোম & লিভিং</div><div class="cat"><b>💄</b>বিউটি</div><div class="cat"><b>📚</b>বই</div><div class="cat"><b>🎒</b>লাইফস্টাইল</div></section><div class="heading" id="products"><h2>জনপ্রিয় পণ্য</h2><span class="muted">ডেমো পণ্য</span></div><section class="products" id="grid"><article class="card" data-s="headphone হেডফোন"><div class="photo">🎧</div><div class="details"><div class="name">ওয়্যারলেস হেডফোন</div><div class="price">৳ ১,২৫০</div><button class="add" onclick="add('হেডফোন')">কার্টে যোগ করুন</button></div></article><article class="card" data-s="watch স্মার্ট ওয়াচ"><div class="photo">⌚</div><div class="details"><div class="name">স্মার্ট ওয়াচ</div><div class="price">৳ ১,৮৯০</div><button class="add" onclick="add('স্মার্ট ওয়াচ')">কার্টে যোগ করুন</button></div></article><article class="card" data-s="bag backpack ব্যাগ"><div class="photo">🎒</div><div class="details"><div class="name">ডেইলি ব্যাকপ্যাক</div><div class="price">৳ ৯৫০</div><button class="add" onclick="add('ব্যাকপ্যাক')">কার্টে যোগ করুন</button></div></article><article class="card" data-s="shoes জুতা"><div class="photo">👟</div><div class="details"><div class="name">ক্যাজুয়াল জুতা</div><div class="price">৳ ১,৫৫০</div><button class="add" onclick="add('জুতা')">কার্টে যোগ করুন</button></div></article></section></main><footer>© 2026 Qynora. All rights reserved.<br>ONE MARKET. ENDLESS POSSIBILITIES.<br>এটি প্রাথমিক ডিজাইন ডেমো; বাস্তব অর্ডার ও পেমেন্ট এখনো চালু নয়।</footer><div class="notice" id="notice"></div><div class="bottom"><button onclick="scrollTo(0,0)"><b>⌂</b>হোম</button><button onclick="document.getElementById('cats').scrollIntoView()"><b>▦</b>ক্যাটাগরি</button><button onclick="msg('কার্টে '+cart+'টি পণ্য')"><b>🛒</b>কার্ট</button><button onclick="msg('অ্যাকাউন্ট পরবর্তী ধাপে যুক্ত হবে')"><b>👤</b>অ্যাকাউন্ট</button></div><script>let cart=0;function msg(t){let n=document.getElementById('notice');n.textContent=t;n.style.display='block';setTimeout(()=>n.style.display='none',2000)}function add(p){cart++;document.getElementById('count').textContent=cart;msg(p+' কার্টে যোগ হয়েছে (ডেমো)')}function searchP(){let q=document.getElementById('q').value.toLowerCase();document.querySelectorAll('.card').forEach(c=>c.style.display=c.dataset.s.includes(q)?'':'none')}</script></body></html>
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090b">
+  <title>Qynora — One Market. Endless Possibilities.</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="assets/js/config.js"></script>
+  <script defer src="assets/js/app.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container head">
+    <a class="brand" href="#"><span class="logo">Q</span> Qynora</a>
+    <form id="search-form" class="search"><input id="search-input" placeholder="পণ্য খুঁজুন..." aria-label="পণ্য খুঁজুন"><button>খুঁজুন</button></form>
+    <div class="head-actions">
+      <button class="button subtle" id="account-button">লগইন</button>
+      <button class="button" id="cart-button">কার্ট <span id="cart-count">0</span></button>
+    </div>
+  </div>
+  <nav class="container nav"><a href="#home">হোম</a><a href="#catalog">পণ্য</a><a href="#seller">বিক্রেতা</a><a href="#about">আমাদের সম্পর্কে</a></nav>
+</header>
+
+<main>
+<section id="home" class="container hero">
+  <div class="hero-panel">
+    <p class="eyebrow">WELCOME TO QYNORA</p>
+    <h1>এক জায়গায় <span>সবকিছু।</span></h1>
+    <p>বিভিন্ন দোকানের পণ্য আবিষ্কার করুন, পছন্দের পণ্য কার্টে রাখুন এবং একটি আধুনিক মার্কেটপ্লেসের অভিজ্ঞতা নিন।</p>
+    <a class="button primary" href="#catalog">পণ্য দেখুন</a>
+    <div class="hero-note">ONE MARKET. ENDLESS POSSIBILITIES.</div>
+  </div>
+</section>
+
+<section id="catalog" class="container section">
+  <div class="section-title">
+    <div><p class="eyebrow">DISCOVER</p><h2>পণ্যসমূহ</h2><p class="muted" id="catalog-message">ডেটাবেস থেকে পণ্য লোড হচ্ছে...</p></div>
+    <select id="category-filter" aria-label="ক্যাটাগরি"><option value="">সব ক্যাটাগরি</option></select>
+  </div>
+  <div id="product-grid" class="product-grid"><div class="empty">লোড হচ্ছে...</div></div>
+</section>
+
+<section id="seller" class="container section">
+  <div class="seller-panel">
+    <div><p class="eyebrow">SELL ON QYNORA</p><h2>আপনার দোকান শুরু করুন</h2><p class="muted">বিক্রেতা অ্যাকাউন্টের আবেদন ও অনুমোদন ব্যবস্থা পরবর্তী ধাপে যুক্ত করা যাবে।</p></div>
+    <button class="button primary" id="seller-info-button">বিক্রেতা সম্পর্কে জানুন</button>
+  </div>
+</section>
+
+<section id="about" class="container section">
+  <div class="section-title"><div><p class="eyebrow">BUILT TO GROW</p><h2>একটি সম্প্রসারণযোগ্য ভিত্তি</h2></div></div>
+  <div class="feature-grid">
+    <article class="feature"><b>🔐 নিরাপদ Auth</b><p>Supabase Authentication দিয়ে ইমেইলভিত্তিক অ্যাকাউন্ট।</p></article>
+    <article class="feature"><b>🗄️ ডেটাবেস</b><p>পণ্য ডেটাবেস থেকে পড়া হবে; RLS নীতির মাধ্যমে প্রবেশ নিয়ন্ত্রণ।</p></article>
+    <article class="feature"><b>🧩 মডিউলার কোড</b><p>HTML, CSS, JavaScript আলাদা ফাইলে—পরবর্তীতে নতুন ফিচার যোগ করা সহজ।</p></article>
+    <article class="feature"><b>📱 Responsive</b><p>মোবাইল, ট্যাবলেট ও ডেস্কটপে ব্যবহারযোগ্য লেআউট।</p></article>
+  </div>
+</section>
+</main>
+
+<footer class="footer"><div class="container footer-inner"><a class="brand" href="#"><span class="logo">Q</span> Qynora</a><span>© <span id="year"></span> Qynora</span><span class="muted">ONE MARKET. ENDLESS POSSIBILITIES.</span></div></footer>
+
+<div class="modal-backdrop" id="auth-modal" aria-hidden="true">
+  <section class="modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
+    <button class="modal-close" data-close="auth-modal" aria-label="বন্ধ">×</button>
+    <h2 id="auth-title">Qynora অ্যাকাউন্ট</h2>
+    <div class="tabs"><button class="tab active" id="login-tab">লগইন</button><button class="tab" id="signup-tab">নতুন অ্যাকাউন্ট</button></div>
+    <form id="auth-form">
+      <label id="name-wrap" class="hidden">নাম<input id="auth-name" autocomplete="name"></label>
+      <label>ইমেইল<input id="auth-email" type="email" required autocomplete="email"></label>
+      <label>পাসওয়ার্ড<input id="auth-password" type="password" required minlength="6" autocomplete="current-password"></label>
+      <button class="button primary full" id="auth-submit">লগইন</button>
+    </form>
+    <p id="auth-message" class="form-message" aria-live="polite"></p>
+    <p class="small muted">ইমেইল ভেরিফিকেশন চালু থাকলে ইনবক্সে আসা নির্দেশনা অনুসরণ করো।</p>
+  </section>
+</div>
+
+<div class="drawer-backdrop" id="cart-drawer">
+  <aside class="drawer">
+    <div class="drawer-head"><h2>শপিং কার্ট</h2><button class="modal-close" data-close="cart-drawer">×</button></div>
+    <div id="cart-items"></div>
+    <div class="cart-total"><b>মোট</b><b id="cart-total">৳০</b></div>
+    <p class="small muted">কার্টটি আপাতত এই ব্রাউজারে সংরক্ষিত। Checkout/payment এখনো যুক্ত করা হয়নি।</p>
+  </aside>
+</div>
+<div id="toast" class="toast" role="status"></div>
+</body>
+</html>
