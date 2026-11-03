@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="bn"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Qynora — Account</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root{--bg:#09090b;--panel:#151519;--line:#292932;--pink:#e52b65;--purple:#6937c8;--muted:#aaaab5}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 85% 0%,#32133c 0,transparent 35%),var(--bg);color:#fff;font-family:system-ui,sans-serif;min-height:100vh;display:grid;place-items:center;padding:22px}
+.wrap{width:100%;max-width:440px}.brand{font-size:32px;font-weight:850;letter-spacing:-1px;margin:0 0 6px}.brand span{background:linear-gradient(100deg,var(--pink),var(--purple));color:transparent;background-clip:text}.tag{color:var(--muted);margin:0 0 22px}
+.card{background:#151519ed;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 20px 70px #0008}
+.tabs{display:flex;gap:8px;margin-bottom:20px}.tabs button{flex:1;background:#22222a;color:#ddd;border:1px solid var(--line);padding:11px;border-radius:11px;font-weight:700}.tabs button.active{background:linear-gradient(100deg,var(--pink),var(--purple));border:0;color:#fff}
+label{display:block;font-size:13px;color:#d4d4dc;margin:13px 0 6px}input{width:100%;padding:13px 14px;border-radius:11px;border:1px solid #393943;background:#0d0d11;color:#fff;font-size:15px;outline:none}input:focus{border-color:#b04aaf}
+.primary{width:100%;margin-top:18px;border:0;border-radius:12px;padding:14px;color:white;font-size:16px;font-weight:800;background:linear-gradient(100deg,var(--pink),var(--purple))}
+.msg{font-size:14px;line-height:1.5;color:#ddd;min-height:22px;margin-top:14px}.hint{font-size:12px;color:var(--muted);line-height:1.5;margin-top:16px}.account{display:none}.account h2{font-size:21px}.secondary{background:#282830;color:white;border:1px solid #444;padding:12px 16px;border-radius:10px}
+</style></head><body><main class="wrap">
+<h1 class="brand"><span>Q</span>ynora</h1><p class="tag">ONE MARKET. ENDLESS POSSIBILITIES.</p>
+<section class="card" id="authCard"><div class="tabs">
+<button id="loginTab" class="active" type="button">লগইন</button><button id="signupTab" type="button">নতুন অ্যাকাউন্ট</button></div>
+<form id="authForm"><div id="nameField" style="display:none"><label for="fullName">তোমার নাম</label><input id="fullName" autocomplete="name" maxlength="80"></div>
+<label for="email">ইমেইল</label><input id="email" type="email" autocomplete="email" required>
+<label for="password">পাসওয়ার্ড</label><input id="password" type="password" autocomplete="current-password" minlength="8" required>
+<button class="primary" id="submitBtn" type="submit">লগইন</button></form>
+<div class="msg" id="message" role="status"></div>
+<p class="hint">এটি Qynora-এর প্রাথমিক অ্যাকাউন্ট পেজ। পাসওয়ার্ড Supabase Authentication-এ পরিচালিত হয়। কাউকে পাসওয়ার্ড বা OTP দেবে না।</p></section>
+<section class="card account" id="accountCard"><h2>Qynora-তে স্বাগতম!</h2><p id="userEmail"></p><p id="profileStatus" class="hint"></p><button class="secondary" id="logoutBtn" type="button">লগআউট</button></section>
+</main><script>
+// নিজের Supabase Project URL ও Publishable Key এখানে বসাও।
+// Secret key / service_role key কখনো এখানে বসাবে না।
+const SUPABASE_URL = "https://gbnxryxkelgbrgxzpprg.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_ES1nCRDE17hLQw_2oTEiGQ_Pe2Msuim";
+const $ = id => document.getElementById(id); let mode="login", client=null;
+function setMode(next){mode=next;$("loginTab").classList.toggle("active",mode==="login");$("signupTab").classList.toggle("active",mode==="signup");$("nameField").style.display=mode==="signup"?"block":"none";$("submitBtn").textContent=mode==="login"?"লগইন":"অ্যাকাউন্ট তৈরি";$("password").autocomplete=mode==="login"?"current-password":"new-password";$("message").textContent=""}
+$("loginTab").addEventListener("click",()=>setMode("login"));$("signupTab").addEventListener("click",()=>setMode("signup"));
+function showAccount(user){$("authCard").style.display="none";$("accountCard").style.display="block";$("userEmail").textContent=user.email||"";$("profileStatus").textContent="তোমার অ্যাকাউন্টে প্রবেশ করা হয়েছে।"}
+function showAuth(){$("authCard").style.display="block";$("accountCard").style.display="none"}
+$("authForm").addEventListener("submit",async e=>{e.preventDefault();if(!client){$("message").textContent="প্রথমে HTML ফাইলে Supabase URL ও Publishable Key বসাও।";return}
+const email=$("email").value.trim(),password=$("password").value;$("submitBtn").disabled=true;$("message").textContent="অপেক্ষা করো…";
+try{if(mode==="signup"){const fullName=$("fullName").value.trim();const {data,error}=await client.auth.signUp({email,password,options:{data:{full_name:fullName}}});if(error)throw error;$("message").textContent=data.session?"অ্যাকাউন্ট তৈরি হয়েছে।":"অ্যাকাউন্ট তৈরি হয়েছে। ইমেইলের confirmation link খুলে তারপর লগইন করো।"}
+else{const {data,error}=await client.auth.signInWithPassword({email,password});if(error)throw error;showAccount(data.user)}}
+catch(error){$("message").textContent=error.message||"সমস্যা হয়েছে। আবার চেষ্টা করো।"}finally{$("submitBtn").disabled=false}});
+$("logoutBtn").addEventListener("click",async()=>{if(!client)return;const {error}=await client.auth.signOut();if(error)$("profileStatus").textContent=error.message;else showAuth()});
+if(SUPABASE_URL.startsWith("https://")&&SUPABASE_PUBLISHABLE_KEY.startsWith("sb_publishable_")){client=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);client.auth.getSession().then(({data})=>{if(data.session)showAccount(data.session.user)});client.auth.onAuthStateChange((_event,session)=>{if(session)showAccount(session.user)})}
+</script></body></html>
